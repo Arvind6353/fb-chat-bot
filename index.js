@@ -92,7 +92,7 @@ function picMessage(recipientId, text) {
 
 
 	if(flag){
-	     /*message = {
+	     message = {
 	                "attachment": {
 	                    "type": "template",
 	                    "payload": {
@@ -105,25 +105,16 @@ function picMessage(recipientId, text) {
 	                                "type": "web_url",
 	                                "url": imageUrl,
 	                                "title": "View Full Image"
-	                                }, {
+	                                }/*, {
 	                                "type": "postback",
 	                                "title": "I like this",
 	                                "payload": "User " + recipientId + " likes kitten " + imageUrl,
-	                            }]
+	                            }*/]
 	                        }]
 	                    }
 	                }
 	            };
-*/
 
-	            message={
-    "attachment":{
-      "type":"image",
-      "payload":{
-        "url":imageUrl
-      }
-    }
-  }
 	            
 	      sendMessage(recipientId, message);
 	}
