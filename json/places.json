@@ -1,0 +1,110 @@
+{
+    "attachment": {
+      "type": "template",
+      "payload": {
+        "template_type": "generic",
+        "elements": [
+          {
+            "title": "Swipe left/right for more Places options.",
+            "buttons": [
+              {
+                "type": "postback",
+                "title": "Cafe",
+                "payload": "cafe"
+              },
+              {
+                "type": "postback",
+                "title": "Gym",
+                "payload": "gym"
+              },
+              {
+                "type": "postback",
+                "title": "Parking",
+                "payload": "parking"
+              }
+            ]
+          },
+          {
+            "title": "Swipe left/right for more places options.",
+            "buttons": [
+              {
+                "type": "postback",
+                "title": "Restaurant",
+                "payload": "restaurant"
+              },
+              {
+                "type": "postback",
+                "title": "Bus Station",
+                "payload": "bus_station"
+              },
+              {
+                "type": "postback",
+                "title": "atm",
+                "payload": "atm"
+              }
+            ]
+          },
+          {
+       	 "title": "Swipe left/right for more places options.",
+            "buttons": [
+              {
+                "type": "postback",
+                "title": "Park",
+                "payload": "park"
+              },
+              {
+                "type": "postback",
+                "title": "Gas Station",
+                "payload": "gas_station"
+              },
+              {
+                "type": "postback",
+                "title": "Shopping Mall",
+                "payload": "shopping_mall"
+              }
+            ]
+          },
+	{
+       	 "title": "Swipe left/right for more places options.",
+            "buttons": [
+              {
+                "type": "postback",
+                "title": "Police",
+                "payload": "police"
+              },
+              {
+                "type": "postback",
+                "title": "Night Clubs",
+                "payload": "night_clubs"
+              },
+              {
+                "type": "postback",
+                "title": "Hospital",
+                "payload": "hospital"
+              }
+            ]
+          },
+{
+       	 "title": "Swipe left/right for more places options.",
+            "buttons": [
+              {
+                "type": "postback",
+                "title": "Bar",
+                "payload": "bar"
+              },
+              {
+                "type": "postback",
+                "title": "Lodging",
+                "payload": "lodging"
+              },
+              {
+                "type": "postback",
+                "title": "Library",
+                "payload": "library"
+              }
+            ]
+          }
+        ]
+      }
+    }
+}
