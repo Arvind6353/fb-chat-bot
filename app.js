@@ -496,10 +496,10 @@ var messageData={
 
 cricapi.cricketMatches(function(databundle) {
 
+var noImageUrl = 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULON4O5WwmVius4C6DTJvH2NC2spQFhtWVL5jx8rFdvPH3p655pc';
         console.log("Got bundle of ", databundle.length, " bytes for cricketMatches()");
-        console.log(databundle);
+        
         var matches = JSON.parse(databundle).data;
-        console.log(matches);
         if(matches){
 	        matches.forEach(function(match) {
 	            var teams = ["Australia", "Bangladesh", "England", "India", "New Zealand", "Pakistan", "South Africa", "Sri Lanka", "West Indies", "Zimbabwe"];
@@ -509,7 +509,6 @@ cricapi.cricketMatches(function(databundle) {
 	                var teamA = currentMatch["team-1"];
 	                var teamB = currentMatch["team-2"];
 	                var required = currentMatch["innings-requirement"];
-	                console.log(currentMatch);
 	                var isTeamAInternational = teams.indexOf(teamA);
 	                var isTeamBInternational = teams.indexOf(teamB);
 	                var matchBetween = teamA + " VS " + teamB;
@@ -520,7 +519,8 @@ cricapi.cricketMatches(function(databundle) {
 				         	 messageData.attachment.payload.elements.push({
 
 					          	"title":matchBetween,
-					          	"subtitle": "Match Status : " + score + "\n" + "Required : " + required
+					          	"subtitle": "Match Status : " + score + "\n" + "Required : " + required,
+					          	"image_url": noImageUrl
 				          })      	
 	                        
 	                    } 
