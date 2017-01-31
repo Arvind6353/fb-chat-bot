@@ -261,7 +261,7 @@ function makeTemplate(len, sender, results, k){
                     var photoUrl = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference='+photoReference+'&key='+googlePlacesApiKey;
                     element = {
                             "title": name,
-                            "image_url": photoUrl,
+                            "image_url": noImageUrl,
                             "subtitle": "Open Now: "+openNow+"\nOverall Rating: "+rating+"\nAddress: "+address,
                             "buttons":[
                                 {
