@@ -223,7 +223,7 @@ function processTextMessage(sender, text){
     }
     
 
-    else if(text.indexOf('cricket')>-1){
+    else if(text.toLowerCase().indexOf('cricket')>-1){
 
     	getScores(sender);
     }
@@ -540,35 +540,29 @@ var noImageUrl = 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULO
 				
 		}
 
-		 messageData={
-		    "attachment":{
-		      "type":"template",
-		      "payload":{
-		        "template_type":"generic",
-		        "elements":[
-		           {
-		            "title":"Welcome to Peter\'s Hats",
-		            "image_url":"https://petersfancybrownhats.com/company_image.png",
-		            "subtitle":"We\'ve got the right hat for everyone.",
-		            "default_action": {
-		              "type": "web_url",
-		              "url": "https://peterssendreceiveapp.ngrok.io/view?item=103",
-		              "messenger_extensions": true,
-		              "webview_height_ratio": "tall",
-		              "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
-		            },
-		            "buttons":[
-		              {
-		                "type":"web_url",
-		                "url":"https://petersfancybrownhats.com",
-		                "title":"View Website"
-		              }           
-		            ]      
-		          }
-		        ]
-		      }
-		    }
-		  }
+var imageUrl = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULON4O5WwmVius4C6DTJvH2NC2spQFhtWVL5jx8rFdvPH3p655pc";
+		  messageData = {
+	                "attachment": {
+	                    "type": "template",
+	                    "payload": {
+	                        "template_type": "generic",
+	                        "elements": [{
+	                            "title": "ad",
+	                            "subtitle": "How's it ;)",
+	                            "image_url": imageUrl ,
+	                            "buttons": [{
+	                                "type": "web_url",
+	                                "url": imageUrl,
+	                                "title": "View Full Image"
+	                                }/*, {
+	                                "type": "postback",
+	                                "title": "I like this",
+	                                "payload": "User " + recipientId + " likes kitten " + imageUrl,
+	                            }*/]
+	                        }]
+	                    }
+	                }
+	            };
 
 		sendRequest(sender, JSON.stringify(messageData)); 
     });
