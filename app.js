@@ -142,6 +142,11 @@ function processTextMessage(sender, text){
 		sendTextMessage(sender,out);
 	}
 
+	else if(text.toLowerCase().indexOf('gayathri')!=-1 || text.toLowerCase().indexOf('gayu')!=-1){
+		var out="Gayuuu is the best :)"
+		sendTextMessage(sender,out);
+	}
+
 
 	else if(text.toLowerCase().indexOf('i want pizza')!=-1 || text.toLowerCase().indexOf('i need pizza')!=-1){
 		var out="I love pizza. I will get you dominos quatraformaggi pizza :D. Just type pizza / dominos :) . "
