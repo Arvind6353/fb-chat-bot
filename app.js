@@ -544,8 +544,8 @@ var noImageUrl = 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULO
 		console.log("circ arrayl----------" +cricArr)
 		
 		setTimeout(function(){
-
-			messageData.attachment.payload.elements=cricArr;
+		cricArr=cricArr.splice(0,4);	
+		messageData.attachment.payload.elements=cricArr;
 		console.log("data ----"+JSON.stringify(messageData));
 		sendRequest(sender, messageData); 	
 		},4500);
