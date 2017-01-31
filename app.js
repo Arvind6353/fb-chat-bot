@@ -520,19 +520,10 @@ var noImageUrl = 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULO
 	                if (true) {
 	                    if (matchStarted) {
 	               
-	                    	console.log("helo");
 	                    	cricArr.push({
 				         	  	"title":matchBetween,
-					          	"subtitle": "Match Status : " + score + "\n" + "Required : " + required,
-					          	"image_url": noImageUrl,
-					         	"buttons":[
-					                            {
-					                            "type": "web_url",
-					                            "url": imageUrl,
-					                            "title": "Go Here!"
-					                            }
-                        					]
- 
+					          	"subtitle": "Match Status : " + score + "\n" + "Required : " + required
+					          	
 				          });   	
 	                        
 	                    } 
@@ -541,10 +532,10 @@ var noImageUrl = 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULO
 	        });
 				
 		}
-		console.log("circ arrayl----------" +cricArr)
 		
 		setTimeout(function(){
-		cricArr=cricArr.splice(0,4);	
+			if(cricArr && cricArr.length>10)
+				cricArr=cricArr.splice(0,10);	
 		messageData.attachment.payload.elements=cricArr;
 		console.log("data ----"+JSON.stringify(messageData));
 		sendRequest(sender, messageData); 	
