@@ -108,23 +108,62 @@ function processTextMessage(sender, text){
     }
 
     else if(text.indexOf('help') > -1){ //give option to select place
-        sendTextMessage(sender, 'It\'s pretty easy to use me: \n\n STEP 1) Type "Start" to begin. \n\n STEP 2) Send your Location \n\n STEP 3) Tell me where would you like to go (i.e. cafe, gym, shopping, club etc etc.) \n\n STEP 4) I\'ll provide you with all the available nearby options with their details. \n\n That is it! You Go out there and have a wonderful day!');
+        sendTextMessage(sender, ' You can chat with me casually and you can also view places that are near by you .\n To view Places near by : \n\n  1) Type "Start" to begin. \n\n 2) Send your Location \n\n 3) Tell me where would you like to go by selecting the options \n\n STEP 4) I will provide you with the available nearby places . \n\n');
         setTimeout(function(){
-            sendTextMessage(sender, 'say "help" for this help reminder');    
+            sendTextMessage(sender, 'type "help" to view the above instructions');    
         }, 900)
     }
     
-    else if(text == 'hi' || text == 'hey' || text.indexOf('hi ') > -1 || text.indexOf('hey ') > -1){
+    else if(text == 'hi' || text == 'hey' || text.indexOf('hi ') > -1 || text.indexOf('hey ') > -1 || text.indexOf('hello') > -1){
         var user = 'https://graph.facebook.com/v2.6/'+sender+'?fields=first_name&access_token='+process.env.PAGE_ACCESS_TOKEN;
 
         request(user, function(error, response, body){
             if(response.statusCode === 200){
                 var data = JSON.parse(body);
                 userName = data.first_name;
-                sendTextMessage(sender, 'Hi '+userName);
+                sendTextMessage(sender, 'Hi '+userName+' :)');
             }
         })
     }
+
+	
+
+	else if(text.toLowerCase().indexOf('how are you')!=-1 || text.toLowerCase().indexOf('how r you')!=-1 || text.toLowerCase().indexOf('how r u')!=-1 || text.toLowerCase().indexOf('how are u')!=-1){
+	 var out=" I am fine. How are you ? "
+		sendTextMessage(sender,out);
+	}
+		
+
+	else if(text.toLowerCase().indexOf('miss u')!=-1 || text.toLowerCase().indexOf('miss you')!=-1){
+		var out=" I miss you :("
+		sendTextMessage(sender,out);
+	}
+
+
+	else if(text.toLowerCase().indexOf('i want pizza')!=-1 || text.toLowerCase().indexOf('i need pizza')!=-1){
+		var out="I love pizza. I will get you dominos quatraformaggi pizza :D. Just type pizza / dominos :) . "
+			sendTextMessage(sender,out);
+	}
+
+	else if(text.toLowerCase().indexOf('oh')!=-1){
+		var out=" oh oh ";
+		sendTextMessage(sender,out);
+	}
+
+
+	else if(text.toLowerCase().indexOf('good morning')!=-1 || text.toLowerCase().indexOf('good evening')!=-1 ||text.toLowerCase().indexOf('good night')!=-1 || text.toLowerCase().indexOf('good day')!=-1){
+        var user = 'https://graph.facebook.com/v2.6/'+sender+'?fields=first_name&access_token='+process.env.PAGE_ACCESS_TOKEN;
+
+        request(user, function(error, response, body){
+            if(response.statusCode === 200){
+                var data = JSON.parse(body);
+                userName = data.first_name;
+                sendTextMessage(sender, text +" "+userName+' :)');
+            }
+        })
+    }
+
+
 
     else if(text.indexOf('start') > -1){
          var messageData = {
@@ -138,6 +177,11 @@ function processTextMessage(sender, text){
         sendRequest(sender, messageData);
     }
     
+    else{
+		var out="I am a baby and still learning . Apologies. :(";
+		sendTextMessage(sender,out);
+
+    }
 
 }
 
