@@ -127,7 +127,7 @@ function processTextMessage(sender, text){
     }
 
     else if(text.indexOf('help') > -1){ //give option to select place
-        sendTextMessage(sender, ' You can chat with me casually or you can view current cricket scores by typing cricket or  you can also view places that are near by you .\n To view Places near by : \n  1) Type "Start" to begin. \n\n 2) Send your Location \n\n 3) Tell me where would you like to go by selecting the options \n\n 4) I will provide you with the available nearby places . \n\n');
+        sendTextMessage(sender, ' You can chat with me casually \n You can view current cricket scores by typing cricket \n You can also view places that are near by you .\n\n To view Places near by : \n  1) Type "Start" to begin. \n\n 2) Send your Location (Turn on gps location )\n\n 3) Tell me where would you like to go by selecting the options \n\n 4) I will provide you with the available nearby places . \n\n');
         setTimeout(function(){
             sendTextMessage(sender, 'type "help" to view the above instructions');    
         }, 900)
@@ -140,7 +140,7 @@ function processTextMessage(sender, text){
             if(response.statusCode === 200){
                 var data = JSON.parse(body);
                 userName = data.first_name;
-                sendTextMessage(sender, 'Hi '+userName+' :) -- Use help to find out how to use me ');
+                sendTextMessage(sender, 'Hi '+userName+' :) -- Type help to find out how to use me ');
             }
         })
     }
@@ -174,13 +174,19 @@ function processTextMessage(sender, text){
 		sendTextMessage(sender,out);
 	}
 
-	else if(text.toLowerCase().indexOf('cool')!=-1 || text.toLowerCase().indexOf('great')!=-1 || text.toLowerCase().indexOf('nice')!=-1){
+	else if(text.toLowerCase().indexOf('cool')!=-1 || text.toLowerCase().indexOf('great')!=-1 || text.toLowerCase().indexOf('nice')!=-1 || text.toLowerCase().indexOf('awesome')!=-1 || text.toLowerCase().indexOf('sweet')!=-1){
 		var out="Thank you";
 		sendTextMessage(sender,out);
 	}
 
 	else if(text.toLowerCase().indexOf('wat doing')!=-1 || text.toLowerCase().indexOf('wassup')!=-1){
 		var out="Nothing much . U ?";
+		sendTextMessage(sender,out);
+	}
+
+
+		else if(text.toLowerCase().indexOf('nothing')!=-1){
+		var out="Ok Ok ";
 		sendTextMessage(sender,out);
 	}
 
@@ -196,7 +202,7 @@ function processTextMessage(sender, text){
 		sendTextMessage(sender,out);
 	}
 
-	else if(text.toLowerCase().indexOf('good morning')!=-1 || text.toLowerCase().indexOf('good evening')!=-1 ||text.toLowerCase().indexOf('good night')!=-1 || text.toLowerCase().indexOf('good day')!=-1){
+	else if(text.toLowerCase().indexOf('good morning')!=-1 ||text.toLowerCase().indexOf('good morn')!=-1 ||text.toLowerCase().indexOf('good eve')!=-1|| text.toLowerCase().indexOf('good evening')!=-1 ||text.toLowerCase().indexOf('good night')!=-1 || text.toLowerCase().indexOf('good day')!=-1){
         var user = 'https://graph.facebook.com/v2.6/'+sender+'?fields=first_name&access_token='+process.env.PAGE_ACCESS_TOKEN;
 
         request(user, function(error, response, body){
@@ -229,7 +235,7 @@ function processTextMessage(sender, text){
     }
 
     else{
-		var out="I am a baby and still learning . Apologies. :(";
+		var out="I am a baby and still learning . Please keep it simple :p ";
 		sendTextMessage(sender,out);
 
     }
