@@ -18,6 +18,10 @@ var googleMapsApiKey = 'AIzaSyB3QSg7VACbvvY7C69SpbejDOGEEQGyOtw';
 var locations;
 var jsonData = '';
 
+
+var cricapi = require("node-cricapi");
+
+
 app.set('port', (process.env.PORT || 5000));
 
 // Allows to process the data 
@@ -33,6 +37,16 @@ app.listen((process.env.PORT || 3000));
 app.get('/', function (req, res) {  
     res.send('This is TestBot Server');
 });
+
+
+
+// Server frontpage
+app.get('/getScores', function (req, res) {  
+	getScores();
+    res.send('chk console.scroes');
+});
+
+
 
 // For Facebook verification (I have deployed this on Heroku server)
 app.get('/webhook', function (req, res) {
@@ -111,7 +125,7 @@ function processTextMessage(sender, text){
     }
 
     else if(text.indexOf('help') > -1){ //give option to select place
-        sendTextMessage(sender, ' You can chat with me casually and you can also view places that are near by you .\n To view Places near by : \n  1) Type "Start" to begin. \n\n 2) Send your Location \n\n 3) Tell me where would you like to go by selecting the options \n\n 4) I will provide you with the available nearby places . \n\n');
+        sendTextMessage(sender, ' You can chat with me casually or you can view current cricket scores by typing cricket or  you can also view places that are near by you .\n To view Places near by : \n  1) Type "Start" to begin. \n\n 2) Send your Location \n\n 3) Tell me where would you like to go by selecting the options \n\n 4) I will provide you with the available nearby places . \n\n');
         setTimeout(function(){
             sendTextMessage(sender, 'type "help" to view the above instructions');    
         }, 900)
@@ -206,6 +220,12 @@ function processTextMessage(sender, text){
         sendRequest(sender, messageData);
     }
     
+
+    else if(text.indexOf('cricket')>-1){
+
+    	getScores();
+    }
+
     else{
 		var out="I am a baby and still learning . Apologies. :(";
 		sendTextMessage(sender,out);
@@ -451,4 +471,45 @@ function sendRequest(sender, messageData) {
                 console.log('Error: ', response.body.error)
             }
     })
+}
+
+
+
+function getScores(){
+
+cricapi.cricketMatches(function(databundle) {
+
+        console.log("Got bundle of ", databundle.length, " bytes for cricketMatches()");
+        var matches = JSON.parse(databundle).data;
+        matches.forEach(function(match) {
+            var teams = ["Afghanistan", "Australia", "Bangladesh", "England", "India", "Ireland", "New Zealand", "Pakistan", "Scotland", "South Africa", "Sri Lanka", "United Arab Emirates", "West Indies", "Zimbabwe"];
+            cricapi.cricketScores(match.unique_id, function(_matchData) {
+                var currentMatch = JSON.parse(_matchData, null, 2);
+                var matchStarted = currentMatch.matchStarted;
+                var teamA = currentMatch["team-1"];
+                var teamB = currentMatch["team-2"];
+                var required = currentMatch["innings-requirement"];
+                console.log(currentMatch);
+                var isTeamAInternational = teams.indexOf(teamA);
+                var isTeamBInternational = teams.indexOf(teamB);
+                var matchBetween = teamA + " VS " + teamB;
+                var score = currentMatch.score;
+                if (isTeamAInternational > -1 || isTeamBInternational > -1) {
+                    if (matchStarted) {
+                        var obj={
+	                        		"text": "",
+	                            	"attachments": [{
+		                                "title": matchBetween,
+		                                "description": "Match Status : " + score + "\n" + "Required : " + required,
+		                                "color": "#0061ff"
+									}]
+                        		}
+
+                        console.log(obj.toString());
+                    } 
+                }
+            });
+        });
+    });
+
 }
