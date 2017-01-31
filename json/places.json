@@ -14,8 +14,8 @@
               },
               {
                 "type": "postback",
-                "title": "Pizza",
-                "payload": "pizza"
+                "title": "Movie Theater",
+                "payload": "movie_theater"
               },
               {
                 "type": "postback",
