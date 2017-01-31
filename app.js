@@ -95,7 +95,7 @@ app.post('/webhook', function (req, res) {
                     }        
                 }
             }
-        }
+        }	
     res.sendStatus(200)
 })
 
@@ -146,6 +146,7 @@ function processTextMessage(sender, text){
 function processLocation(sender, place){
     var index = placesArray.indexOf(place);
     var placeName = placesName[index];
+    console.log("name of place ------------"+placeName);
     var  messageData = {
         "attachment":{
             "type": "template",
@@ -163,7 +164,10 @@ function processLocation(sender, place){
         }
     }
     sendTextMessage(sender, 'Finding '+placeName+ ' near you...');
-    options(sender, place);
+    setTimeout(function(){  
+    	options(sender, place);
+	},200);
+
     setTimeout(function(){  
         sendRequest(sender, messageData);
     }, 1500);
@@ -177,7 +181,7 @@ function options(sender, place){
  
     mainMessageData = '{"attachment":{ "type":"template", "payload":{ "template_type":"generic","elements": [' ;
     request(placesUrl, function(error, response, body){
-        if(error) throw error;
+        if(error) { console.log("errrot in reqquest ---"+err);throw error;}
         var data = JSON.parse(body);
         locations = data.results;
         var length;
@@ -220,6 +224,11 @@ function makeTemplate(len, sender, results, k){
         
         request(placeDetailUrl, function(error, response, body){
                  
+               if(error){
+               	console.log("error 000 in mapp000-----"+error);
+               	throw error;
+
+               }  
             if(!error && response.statusCode == 200){
                 //console.log(directionUrl);
                 var data = JSON.parse(body);
@@ -334,7 +343,7 @@ function processPlaces(sender, text ){ //gives user options to select from
     
     setTimeout(function(){
         sendRequest(sender, messageData); 
-    }, 950);
+    }, 1000);
 }
 
 
