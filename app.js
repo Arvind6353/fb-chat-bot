@@ -41,13 +41,13 @@ app.get('/', function (req, res) {
 });
 
 
-
+/*
 // Server frontpage
 app.get('/getScores', function (req, res) {  
-	getScores();
+//	getScores();
     res.send('chk console.scroes');
 });
-
+*/
 
 
 // For Facebook verification (I have deployed this on Heroku server)
@@ -537,8 +537,9 @@ var noImageUrl = 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULO
 	                }
 	            });
 	        });
-				sendRequest(sen, JSON.stringify(messageData)); 
+				
 		}
+		sendRequest(sen, JSON.stringify(messageData)); 
     });
 
 }
