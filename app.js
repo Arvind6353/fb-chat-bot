@@ -170,7 +170,7 @@ function processLocation(sender, place){
 
     setTimeout(function(){  
         sendRequest(sender, messageData);
-    }, 3500);
+    }, 2500);
 }
 
 var mainMessageData;
@@ -211,7 +211,7 @@ function makeTemplate(len, sender, results, k){
             locName = name.replace(' ', '+'),
             destLat,
             destLong,
-            noImageUrl = 'Link to any Image you want to show when there is no Image to display',
+            noImageUrl = 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULON4O5WwmVius4C6DTJvH2NC2spQFhtWVL5jx8rFdvPH3p655pc',
             placeDetailUrl = 'https://maps.googleapis.com/maps/api/place/details/json?reference='+reference+'&key='+googlePlacesApiKey;
         
         if(results[k].geometry && results[k].geometry.location){ 
@@ -261,7 +261,7 @@ function makeTemplate(len, sender, results, k){
                     var photoUrl = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference='+photoReference+'&key='+googlePlacesApiKey;
                     element = {
                             "title": name,
-                            "image_url": noImageUrl,
+                            "image_url": photoUrl,
                             "subtitle": "Open Now: "+openNow+"\nOverall Rating: "+rating+"\nAddress: "+address,
                             "buttons":[
                                 {
