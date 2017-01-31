@@ -479,6 +479,8 @@ function sendRequest(sender, messageData) {
 
 function getScores(sender){
 
+var sen=sender;
+console.log(sen);
 
 var messageData={
     "attachment":{
@@ -527,7 +529,7 @@ var noImageUrl = 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULO
 	                }
 	            });
 	        });
-				sendRequest(sender, messageData); 
+				sendRequest(sen, messageData); 
 		}
     });
 
