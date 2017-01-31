@@ -204,14 +204,14 @@ function options(sender, place){
 function makeTemplate(len, sender, results, k){
 
     if(k < len){
-        var name = results[k].name;
-            address = results[k].vicinity;
-            reference = results[k].reference;
-            photoReference;
-            locName = name.replace(' ', '+');
-            destLat;
-            destLong;
-            noImageUrl = 'Link to any Image you want to show when there is no Image to display';
+        var name = results[k].name,
+            address = results[k].vicinity,
+            reference = results[k].reference,
+            photoReference,
+            locName = name.replace(' ', '+'),
+            destLat,
+            destLong,
+            noImageUrl = 'Link to any Image you want to show when there is no Image to display',
             placeDetailUrl = 'https://maps.googleapis.com/maps/api/place/details/json?reference='+reference+'&key='+googlePlacesApiKey;
         
         if(results[k].geometry && results[k].geometry.location){ 
