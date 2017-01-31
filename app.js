@@ -127,7 +127,7 @@ function processTextMessage(sender, text){
     }
 
     else if(text.indexOf('help') > -1){ //give option to select place
-        sendTextMessage(sender, ' You can chat with me casually \n You can view current cricket scores by typing cricket \n You can also view places that are near by you .\n\n To view Places near by : \n  1) Type "Start" to begin. \n\n 2) Send your Location (Turn on gps location )\n\n 3) Tell me where would you like to go by selecting the options \n\n 4) I will provide you with the available nearby places . \n\n');
+        sendTextMessage(sender, ' You can chat with me casually \n\n You can view current cricket scores by typing cricket \n\n You can also view places that are near by you .\n\n To view Places near by : \n  1) Type "Start" to begin. \n 2) Send your Location (Turn on gps location and click on the send location button)\n\n 3) Tell me where would you like to go by selecting the options \n 4) I will provide you with the available nearby places . \n\n');
         setTimeout(function(){
             sendTextMessage(sender, 'type "help" to view the above instructions');    
         }, 900)
@@ -185,7 +185,7 @@ function processTextMessage(sender, text){
 	}
 
 
-		else if(text.toLowerCase().indexOf('nothing')!=-1){
+	else if(text.toLowerCase().indexOf('nothing')!=-1){
 		var out="Ok Ok ";
 		sendTextMessage(sender,out);
 	}
@@ -201,6 +201,87 @@ function processTextMessage(sender, text){
 		var out="Oh ok..";
 		sendTextMessage(sender,out);
 	}
+
+
+
+	else if(text.toLowerCase().indexOf('sadness')!=-1){
+
+    	var imageUrl = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULON4O5WwmVius4C6DTJvH2NC2spQFhtWVL5jx8rFdvPH3p655pc";
+    		
+    	message = {
+	                "attachment": {
+	                    "type": "template",
+	                    "payload": {
+	                        "template_type": "generic",
+	                        "elements": [{
+	                            "title": values[0],
+	                            "subtitle": "How's it ;)",
+	                            "image_url": imageUrl ,
+	                            "buttons": [{
+	                                "type": "web_url",
+	                                "url": imageUrl,
+	                                "title": "View Full Image"
+	                                }]
+	                        }]
+	                    }
+	                }
+	            };
+	            
+	            sendRequest(sender, message);
+    }
+
+    else if(text.toLowerCase().indexOf('pizza')!=-1 || text.toLowerCase().indexOf('dominos')!=-1){
+
+    	var imageUrl = "http://martinionheels.com/wp-content/uploads/2016/12/15196070_10154507564607745_8533070322777242582_o-1140x596.jpg";
+    	message = {
+	                "attachment": {
+	                    "type": "template",
+	                    "payload": {
+	                        "template_type": "generic",
+	                        "elements": [{
+	                            "title": values[0],
+	                            "subtitle":"We should try this again :(",
+	                            "image_url": imageUrl ,
+	                            "buttons": [{
+	                                "type": "web_url",
+	                                "url": imageUrl,
+	                                "title": "View Full Image"
+	                                }]
+	                        }]
+	                    }
+	                }
+	            };
+
+	            sendRequest(sender, message);
+    }
+
+
+else if(text.toLowerCase().indexOf('chinchan')!=-1 || text.toLowerCase().indexOf('shinchan')!=-1 ||text.toLowerCase().indexOf('sinchan')!=-1){
+    	var imageUrl = "https://www.walldevil.com/wallpapers/a49/wallpapers-crayon-background-wallpaper-cartoon.jpg";
+    	message = {
+	                "attachment": {
+	                    "type": "template",
+	                    "payload": {
+	                        "template_type": "generic",
+	                        "elements": [{
+	                            "title": values[0],
+	                            "subtitle": "How's it ;)",
+	                            "image_url": imageUrl ,
+	                            "buttons": [{
+	                                "type": "web_url",
+	                                "url": imageUrl,
+	                                "title": "View Full Image"
+	                                }]
+	                        }]
+	                    }
+	                }
+	            };
+	            sendRequest(sender, message);
+
+    }
+
+
+	     
 
 	else if(text.toLowerCase().indexOf('good morning')!=-1 ||text.toLowerCase().indexOf('good morn')!=-1 ||text.toLowerCase().indexOf('good eve')!=-1|| text.toLowerCase().indexOf('good evening')!=-1 ||text.toLowerCase().indexOf('good night')!=-1 || text.toLowerCase().indexOf('good day')!=-1){
         var user = 'https://graph.facebook.com/v2.6/'+sender+'?fields=first_name&access_token='+process.env.PAGE_ACCESS_TOKEN;
