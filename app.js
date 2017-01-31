@@ -18,8 +18,10 @@ var googleMapsApiKey = 'AIzaSyB3QSg7VACbvvY7C69SpbejDOGEEQGyOtw';
 var locations;
 var jsonData = '';
 
+var wget = require("request");
+var apikey = "AkuSt9zr5kPFBtTkPnifA2lH8VF2";
 
-var cricapi = require("node-cricapi");
+var cricapi = {};
 
 
 app.set('port', (process.env.PORT || 5000));
@@ -223,7 +225,7 @@ function processTextMessage(sender, text){
 
     else if(text.indexOf('cricket')>-1){
 
-    	getScores();
+    	getScores(sender);
     }
 
     else{
@@ -475,41 +477,96 @@ function sendRequest(sender, messageData) {
 
 
 
-function getScores(){
+function getScores(sender){
+
+
+var messageData={
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"generic",
+        "elements":[
+           
+        ]
+      }
+    }
+  }
+
+
 
 cricapi.cricketMatches(function(databundle) {
 
         console.log("Got bundle of ", databundle.length, " bytes for cricketMatches()");
+        console.log(databundle);
         var matches = JSON.parse(databundle).data;
-        matches.forEach(function(match) {
-            var teams = ["Afghanistan", "Australia", "Bangladesh", "England", "India", "Ireland", "New Zealand", "Pakistan", "Scotland", "South Africa", "Sri Lanka", "United Arab Emirates", "West Indies", "Zimbabwe"];
-            cricapi.cricketScores(match.unique_id, function(_matchData) {
-                var currentMatch = JSON.parse(_matchData, null, 2);
-                var matchStarted = currentMatch.matchStarted;
-                var teamA = currentMatch["team-1"];
-                var teamB = currentMatch["team-2"];
-                var required = currentMatch["innings-requirement"];
-                console.log(currentMatch);
-                var isTeamAInternational = teams.indexOf(teamA);
-                var isTeamBInternational = teams.indexOf(teamB);
-                var matchBetween = teamA + " VS " + teamB;
-                var score = currentMatch.score;
-                if (isTeamAInternational > -1 || isTeamBInternational > -1) {
-                    if (matchStarted) {
-                        var obj={
-	                        		"text": "",
-	                            	"attachments": [{
-		                                "title": matchBetween,
-		                                "description": "Match Status : " + score + "\n" + "Required : " + required,
-		                                "color": "#0061ff"
-									}]
-                        		}
+        console.log(matches);
+        if(matches){
+	        matches.forEach(function(match) {
+	            var teams = ["Australia", "Bangladesh", "England", "India", "New Zealand", "Pakistan", "South Africa", "Sri Lanka", "West Indies", "Zimbabwe"];
+	            cricapi.cricketScores(match.unique_id, function(_matchData) {
+	                var currentMatch = JSON.parse(_matchData, null, 2);
+	                var matchStarted = currentMatch.matchStarted;
+	                var teamA = currentMatch["team-1"];
+	                var teamB = currentMatch["team-2"];
+	                var required = currentMatch["innings-requirement"];
+	                console.log(currentMatch);
+	                var isTeamAInternational = teams.indexOf(teamA);
+	                var isTeamBInternational = teams.indexOf(teamB);
+	                var matchBetween = teamA + " VS " + teamB;
+	                var score = currentMatch.score;
+	                if (isTeamAInternational > -1 || isTeamBInternational > -1) {
+	                    if (matchStarted) {
+	                        
+				         	 messageData.attachment.payload.elements.push({
 
-                        console.log(obj.toString());
-                    } 
-                }
-            });
-        });
+					          	"title":matchBetween,
+					          	"subtitle": "Match Status : " + score + "\n" + "Required : " + required
+				          })      	
+	                        
+	                    } 
+	                }
+	            });
+	        });
+				sendRequest(sender, messageData); 
+		}
     });
 
+}
+
+
+
+cricapi.cricketMatches = function(callback) {
+  wget.post({ 
+	  url: "http://cricapi.com/api/cricket/", 
+		  form: { apikey: apikey }
+  }, function(err, resp, body) { 
+	  callback(body); 
+  });
+};
+
+cricapi.cricketScores = function(unique_id, callback) {
+  wget.post({
+	  url: "http://cricapi.com/api/cricketScore/",
+		  form: { unique_id: unique_id, apikey: apikey }
+  }, function(err, resp, body) { 
+	  callback(body); 
+  });
+}
+
+cricapi.ballByBall = function(unique_id, callback) {
+  wget.post({
+	  url: "http://cricapi.com/api/ballByBall/", 
+		  form: { unique_id: unique_id, apikey: apikey }
+  }, function(err, resp, body) { 
+	  callback(body); 
+  });
+}
+
+cricapi.playerStats = function(pid, callback) {
+  wget.post({
+	  url: "http://cricapi.com/api/playerStats/",
+		  form: { pid: pid, apikey: apikey }
+  }, function(err, resp, body) { 
+	  callback(body); 
+  });
 }
