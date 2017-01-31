@@ -140,7 +140,7 @@ function processTextMessage(sender, text){
             if(response.statusCode === 200){
                 var data = JSON.parse(body);
                 userName = data.first_name;
-                sendTextMessage(sender, 'Hi '+userName+' :)');
+                sendTextMessage(sender, 'Hi '+userName+' :) -- Use help to find out how to use me ');
             }
         })
     }
