@@ -20,14 +20,41 @@ app.get('/webhook', function (req, res) {
         res.send('Invalid verify token');
     }
 });
+
+
+
+
 // handler receiving messages
 app.post('/webhook', function (req, res) {  
+
+
+
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {  
+
+
+
+        	if(event.message.text && event.message.text.indexOf("location")!=-1){
+	        	var message={
+						    "text":"Please share your location:",
+						    "quick_replies":[
+						      {
+						        "content_type":"location",
+						      }
+						    ]
+						  }
+
+				sendMessage(event.sender.id, message);			  
+				console.log("location part")
+			}
+
  		   if (!picMessage(event.sender.id, event.message.text)) {
-        		sendMessage(event.sender.id, {text: event.message.text +" :) "});
+
+ 		   		if(!nmlMessage(event.sender.id, event.message.text)){
+        			sendMessage(event.sender.id, {text: event.message.text +" :) "});
+    			}
     		}
 		}
     }
@@ -43,6 +70,7 @@ function sendMessage(recipientId, message) {
         json: {
             recipient: {id: recipientId},
             message: message,
+            sender_action:"typing_on"
         }
     }, function(error, response, body) {
         if (error) {
@@ -91,8 +119,12 @@ function picMessage(recipientId, text) {
         }
     }
 
-
+	var subtitle="How's it ;)";
 	if(flag){
+		
+		if(values[0].toLowerCase()=='pizza' || values[0].toLowerCase()=='dominos'){
+		 	subtitle="We should try this again :(";
+		}
 	     message = {
 	                "attachment": {
 	                    "type": "template",
@@ -121,5 +153,31 @@ function picMessage(recipientId, text) {
 	}
 
             return flag;
+
+}
+
+
+function nmlMessage(recipientId, text){
+
+	var out=text; 
+
+	if(text.toLowerCase().indexOf('hi')!=-1 || text.toLowerCase().indexOf('hello')!=-1)
+		out=" Hi :)"
+
+	if(text.toLowerCase().indexOf('how are you')!=-1 || text.toLowerCase().indexOf('how r you')!=-1 || text.toLowerCase().indexOf('how r u')!=-1 || text.toLowerCase().indexOf('how are u')!=-1)
+		out=" I am fine. How are you ? "
+
+	if(text.toLowerCase().indexOf('miss u')!=-1 || text.toLowerCase().indexOf('miss you')!=-1)
+		out=" I miss you :("
+
+
+	if(text.toLowerCase().indexOf('i want pizza')!=-1 || text.toLowerCase().indexOf('i need pizza')!=-1)
+		out="I love pizza. I will get you dominos quatraformaggi pizza :D. Just type pizza / dominos :) . "
+
+	if(text.toLowerCase().indexOf('oh')!=-1)
+		out=" oh oh "
+
+
+	sendMessage(recipientId, {text: out });
 
 }
