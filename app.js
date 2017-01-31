@@ -232,9 +232,9 @@ function makeTemplate(len, sender, results, k){
                }  
             if(!error && response.statusCode == 200){
                 //console.log(directionUrl);
-                var data = JSON.parse(body);
-                    openHours;
-                    openNow;
+                var data = JSON.parse(body),
+                    openHours,
+                    openNow,
                     element;
 
                 if(data.result && data.result.opening_hours && data.result.opening_hours.open_now){
