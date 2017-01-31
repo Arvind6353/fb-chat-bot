@@ -41,13 +41,13 @@ app.get('/', function (req, res) {
 });
 
 
-/*
+
 // Server frontpage
 app.get('/getScores', function (req, res) {  
-//	getScores();
+	getScores();
     res.send('chk console.scroes');
 });
-*/
+
 
 
 // For Facebook verification (I have deployed this on Heroku server)
@@ -502,6 +502,7 @@ var noImageUrl = 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULO
         console.log("Got bundle of ", databundle.length, " bytes for cricketMatches()");
         
         var matches = JSON.parse(databundle).data;
+        console.log(matches);
         if(matches){
 	        matches.forEach(function(match) {
 	            var teams = ["Australia", "Bangladesh","Scotland","Afghanistan","Ireland","England", "India", "New Zealand", "Pakistan", "South Africa", "Sri Lanka", "West Indies", "Zimbabwe"];
@@ -515,10 +516,10 @@ var noImageUrl = 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULO
 	                var isTeamBInternational = teams.indexOf(teamB);
 	                var matchBetween = teamA + " VS " + teamB;
 	                var score = currentMatch.score;
-	                if (isTeamAInternational > -1 || isTeamBInternational > -1) {
+	                if (true) {
 	                    if (matchStarted) {
 	               
-
+	                    	console.log("helo");
 				         	 messageData.attachment.payload.elements.push({
 
 					          	"title":matchBetween,
@@ -542,7 +543,7 @@ var noImageUrl = 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULO
 		}
 
 		console.log("data ----"+JSON.stringify(messageData));
-		sendRequest(sender, messageData); 
+//		sendRequest(sender, messageData); 
     });
 
 }
