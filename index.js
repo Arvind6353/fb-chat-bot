@@ -50,7 +50,7 @@ app.post('/webhook', function (req, res) {
 				console.log("location part")
 			}
 
- 		   if (!picMessage(event.sender.id, event.message.text)) {
+ 		   else if (!picMessage(event.sender.id, event.message.text)) {
 
  		   		if(!nmlMessage(event.sender.id, event.message.text)){
         			sendMessage(event.sender.id, {text: event.message.text +" :) "});
