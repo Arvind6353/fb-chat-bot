@@ -208,13 +208,13 @@ function processTextMessage(sender, text){
 
     	var imageUrl = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULON4O5WwmVius4C6DTJvH2NC2spQFhtWVL5jx8rFdvPH3p655pc";
     		
-    	message = {
+    	var message = {
 	                "attachment": {
 	                    "type": "template",
 	                    "payload": {
 	                        "template_type": "generic",
 	                        "elements": [{
-	                            "title": values[0],
+	                            "title": text,
 	                            "subtitle": "How's it ;)",
 	                            "image_url": imageUrl ,
 	                            "buttons": [{
@@ -226,20 +226,20 @@ function processTextMessage(sender, text){
 	                    }
 	                }
 	            };
-	            
+
 	            sendRequest(sender, message);
     }
 
     else if(text.toLowerCase().indexOf('pizza')!=-1 || text.toLowerCase().indexOf('dominos')!=-1){
 
     	var imageUrl = "http://martinionheels.com/wp-content/uploads/2016/12/15196070_10154507564607745_8533070322777242582_o-1140x596.jpg";
-    	message = {
+    	var message = {
 	                "attachment": {
 	                    "type": "template",
 	                    "payload": {
 	                        "template_type": "generic",
 	                        "elements": [{
-	                            "title": values[0],
+	                            "title": text,
 	                            "subtitle":"We should try this again :(",
 	                            "image_url": imageUrl ,
 	                            "buttons": [{
@@ -258,13 +258,13 @@ function processTextMessage(sender, text){
 
 else if(text.toLowerCase().indexOf('chinchan')!=-1 || text.toLowerCase().indexOf('shinchan')!=-1 ||text.toLowerCase().indexOf('sinchan')!=-1){
     	var imageUrl = "https://www.walldevil.com/wallpapers/a49/wallpapers-crayon-background-wallpaper-cartoon.jpg";
-    	message = {
+    	var message = {
 	                "attachment": {
 	                    "type": "template",
 	                    "payload": {
 	                        "template_type": "generic",
 	                        "elements": [{
-	                            "title": values[0],
+	                            "title": text,
 	                            "subtitle": "How's it ;)",
 	                            "image_url": imageUrl ,
 	                            "buttons": [{
