@@ -133,7 +133,7 @@ function processTextMessage(sender, text){
         }, 900)
     }
     
-    else if(text == 'hi' || text == 'hey' || text.indexOf('hi ') > -1 || text.indexOf('hey ') > -1 || text.indexOf('hello') > -1){
+    else if(text.toLowerCase()== 'hi' || text == 'hey' || text.toLowerCase().indexOf('hi ') > -1 || text.indexOf('hey ') > -1 || text.indexOf('hello') > -1){
         var user = 'https://graph.facebook.com/v2.6/'+sender+'?fields=first_name&access_token='+process.env.PAGE_ACCESS_TOKEN;
 
         request(user, function(error, response, body){
