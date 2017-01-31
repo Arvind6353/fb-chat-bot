@@ -191,6 +191,12 @@ function processTextMessage(sender, text){
 	}
 
 
+	else if(text.toLowerCase().indexOf('bye')!=-1){
+		var out="Bye :)";
+		sendTextMessage(sender,out);
+	}
+
+
 	else if(text.toLowerCase().indexOf('how was ur day')!=-1 || text.toLowerCase().indexOf('how was your day')!=-1){
 		var out="It was fine . Urs ?";
 		sendTextMessage(sender,out);
