@@ -197,6 +197,17 @@ function processTextMessage(sender, text){
 	}
 
 
+	else if(text.toLowerCase().indexOf('oh pls')!=-1){
+		var out="Dont tel oh pls :@";
+		sendTextMessage(sender,out);
+	}
+
+	else if(text.toLowerCase()=='ok'){
+		var out="No one word reply pls :/";
+		sendTextMessage(sender,out);
+	}
+
+
 	else if(text.toLowerCase().indexOf('how was ur day')!=-1 || text.toLowerCase().indexOf('how was your day')!=-1){
 		var out="It was fine . Urs ?";
 		sendTextMessage(sender,out);
