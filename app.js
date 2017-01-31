@@ -166,11 +166,11 @@ function processLocation(sender, place){
     sendTextMessage(sender, 'Finding '+placeName+ ' near you...');
     setTimeout(function(){  
     	options(sender, place);
-	},200);
+	},400);
 
     setTimeout(function(){  
         sendRequest(sender, messageData);
-    }, 1500);
+    }, 3500);
 }
 
 var mainMessageData;
@@ -182,6 +182,7 @@ function options(sender, place){
     mainMessageData = '{"attachment":{ "type":"template", "payload":{ "template_type":"generic","elements": [' ;
     request(placesUrl, function(error, response, body){
         if(error) { console.log("errrot in reqquest ---"+err);throw error;}
+        console.log("places -----" +body);
         var data = JSON.parse(body);
         locations = data.results;
         var length;
