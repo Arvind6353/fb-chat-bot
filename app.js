@@ -486,7 +486,8 @@ var messageData={
     "attachment":{
       "type":"template",
       "payload":{
-        "template_type":"generic",
+        "template_type":"list",
+          "top_element_style": "compact",
         "elements":[
            
         ]
