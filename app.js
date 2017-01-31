@@ -486,8 +486,7 @@ var messageData={
     "attachment":{
       "type":"template",
       "payload":{
-        "template_type":"list",
-          "top_element_style": "compact",
+        "template_type":"generic",
         "elements":[
            
         ]
@@ -501,10 +500,9 @@ cricapi.cricketMatches(function(databundle) {
 
 var cricArr=[];
 var noImageUrl = 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULON4O5WwmVius4C6DTJvH2NC2spQFhtWVL5jx8rFdvPH3p655pc';
-        console.log("Got bundle of ", databundle.length, " bytes for cricketMatches()");
         
         var matches = JSON.parse(databundle).data;
-        console.log(matches);
+        
         if(matches){
 	        matches.forEach(function(match) {
 	            var teams = ["Australia", "Bangladesh","Scotland","Afghanistan","Ireland","England", "India", "New Zealand", "Pakistan", "South Africa", "Sri Lanka", "West Indies", "Zimbabwe"];
@@ -523,7 +521,7 @@ var noImageUrl = 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULO
 	               
 	                    	cricArr.push({
 				         	  	"title":matchBetween,
-					          	"subtitle": "Match Status : " + score + "\n" + "Required : " + required
+					          	"subtitle": score + "\n" + "Required : " + required
 					          	
 				          });   	
 	                        
@@ -538,7 +536,7 @@ var noImageUrl = 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULO
 			if(cricArr && cricArr.length>10)
 				cricArr=cricArr.splice(0,10);	
 		messageData.attachment.payload.elements=cricArr;
-		console.log("data ----"+JSON.stringify(messageData));
+		
 		sendRequest(sender, messageData); 	
 		},4500);
 		
