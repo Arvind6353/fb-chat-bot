@@ -14,13 +14,13 @@
               },
               {
                 "type": "postback",
-                "title": "Gym",
-                "payload": "gym"
+                "title": "Pizza",
+                "payload": "pizza"
               },
               {
                 "type": "postback",
-                "title": "Parking",
-                "payload": "parking"
+                "title": "Gym",
+                "payload": "gym"
               }
             ]
           },
@@ -74,33 +74,13 @@
               },
               {
                 "type": "postback",
-                "title": "Night Clubs",
-                "payload": "night_clubs"
+                "title": "Library",
+                "payload": "library"
               },
               {
                 "type": "postback",
                 "title": "Hospital",
                 "payload": "hospital"
-              }
-            ]
-          },
-{
-       	 "title": "Swipe left/right for more places options.",
-            "buttons": [
-              {
-                "type": "postback",
-                "title": "Bar",
-                "payload": "bar"
-              },
-              {
-                "type": "postback",
-                "title": "Lodging",
-                "payload": "lodging"
-              },
-              {
-                "type": "postback",
-                "title": "Library",
-                "payload": "library"
               }
             ]
           }

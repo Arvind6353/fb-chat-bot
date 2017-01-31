@@ -45,8 +45,8 @@ var userLong;
 var userName;
 
 //Types of Places 
-var placesArray = ['cafe', 'gym', 'parking', 'restaurant', 'bus_station', 'atm', 'park', 'gas_station', 'shopping_mall', 'police', 'night_clubs', 'hospital', 'bar', 'lodging', 'library'];
-var placesName = ['Cafes', 'Gyms', 'Parking', 'Restaurants', 'Bus Station', 'ATMs', 'Parks', 'Gas Stations', 'Shopping Malls', 'Police Stations', 'Night Clubs', 'Hospitals', 'Bars', 'Lodges', 'Library'];                   
+var placesArray = ['cafe', 'pizza','gym', 'parking', 'restaurant', 'bus_station', 'atm', 'park', 'gas_station', 'shopping_mall', 'police', 'night_clubs', 'hospital', 'bar', 'lodging', 'library'];
+var placesName = ['Cafes', 'Pizzas','Gyms', 'Parking', 'Restaurants', 'Bus Station', 'ATMs', 'Parks', 'Gas Stations', 'Shopping Malls', 'Police Stations', 'Night Clubs', 'Hospitals', 'Bars', 'Lodges', 'Library'];                   
 
 //Reading the json file
 jsonData += fs.readFileSync('./json/places.json');
