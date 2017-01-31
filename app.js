@@ -493,7 +493,7 @@ var messageData={
       }
     }
   }
-
+var imageUrl = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULON4O5WwmVius4C6DTJvH2NC2spQFhtWVL5jx8rFdvPH3p655pc";
 
 sendTextMessage(sender, 'Fetching the latest cricket scores ...');
 cricapi.cricketMatches(function(databundle) {
@@ -526,7 +526,7 @@ var noImageUrl = 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULO
 					         	"buttons":[
 					                            {
 					                            "type": "web_url",
-					                            "url": "http://www.google.com",
+					                            "url": imageUrl,
 					                            "title": "Go Here!"
 					                            }
                         					]
@@ -540,31 +540,7 @@ var noImageUrl = 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULO
 				
 		}
 
-var imageUrl = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULON4O5WwmVius4C6DTJvH2NC2spQFhtWVL5jx8rFdvPH3p655pc";
-		  messageData = {
-	                "attachment": {
-	                    "type": "template",
-	                    "payload": {
-	                        "template_type": "generic",
-	                        "elements": [{
-	                            "title": "ad",
-	                            "subtitle": "How's it ;)",
-	                            "image_url": imageUrl ,
-	                            "buttons": [{
-	                                "type": "web_url",
-	                                "url": imageUrl,
-	                                "title": "View Full Image"
-	                                }/*, {
-	                                "type": "postback",
-	                                "title": "I like this",
-	                                "payload": "User " + recipientId + " likes kitten " + imageUrl,
-	                            }*/]
-	                        }]
-	                    }
-	                }
-	            };
-
-		sendRequest(sender, JSON.stringify(messageData)); 
+		sendRequest(sender, messageData); 
     });
 
 }
