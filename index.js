@@ -64,9 +64,10 @@ function picMessage(recipientId, text) {
 
     if(values[0].toLowerCase()=='sadness'){
 
-    	var imageUrl = "https://www.google.co.in/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjUjuvJuurRAhUIsI8KHdYXCXUQjRwIBw&url=http%3A%2F%2Fdisney.wikia.com%2Fwiki%2FSadness&psig=AFQjCNFX3p0BuYVOaXvtheynPG8aGCdfWg&ust=1485885928006565";
+    	var imageUrl = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULON4O5WwmVius4C6DTJvH2NC2spQFhtWVL5jx8rFdvPH3p655pc";
     	flag=true;
     }
+    
 
 
     if(values[0].toLowerCase()=='pizza'){
