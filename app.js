@@ -480,7 +480,7 @@ function sendRequest(sender, messageData) {
 function getScores(sender){
 
 var sen=sender;
-console.log(sen);
+console.log("sdS" +sen);
 
 var messageData={
     "attachment":{
@@ -495,7 +495,7 @@ var messageData={
   }
 
 
-
+sendTextMessage(sender, 'Fetching the latest cricket scores ...');
 cricapi.cricketMatches(function(databundle) {
 
 var noImageUrl = 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULON4O5WwmVius4C6DTJvH2NC2spQFhtWVL5jx8rFdvPH3p655pc';
@@ -522,14 +522,22 @@ var noImageUrl = 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULO
 
 					          	"title":matchBetween,
 					          	"subtitle": "Match Status : " + score + "\n" + "Required : " + required,
-					          	"image_url": noImageUrl
+					          	"image_url": noImageUrl,
+					         	"buttons":[
+					                            {
+					                            "type": "web_url",
+					                            "url": "http://www.google.com",
+					                            "title": "Go Here!"
+					                            }
+                        					]
+ 
 				          })      	
 	                        
 	                    } 
 	                }
 	            });
 	        });
-				sendRequest(sen, messageData); 
+				sendRequest(sen, JSON.stringify(messageData)); 
 		}
     });
 
