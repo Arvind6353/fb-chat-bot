@@ -540,7 +540,7 @@ var noImageUrl = 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULO
 				
 		}
 
-		console.log("data ----"+messageData)
+		console.log("data ----"+JSON.stringify(messageData));
 		sendRequest(sender, messageData); 
     });
 
