@@ -67,12 +67,12 @@ function picMessage(recipientId, text) {
     	var imageUrl = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULON4O5WwmVius4C6DTJvH2NC2spQFhtWVL5jx8rFdvPH3p655pc";
     	flag=true;
     }
-    
 
 
-    if(values[0].toLowerCase()=='pizza'){
 
-    	var imageUrl = "https://www.google.co.in/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwillaisvOrRAhVKvI8KHUXTARYQjRwIBw&url=http%3A%2F%2Fmartinionheels.com%2Ffive-people-who-would-simply-love-quattro-formaggi-burst-pizza-by-dominos%2F&psig=AFQjCNHBGyvqwCBJVi810Tuu-sWNj-xf2w&ust=1485886390300294";
+    if(values[0].toLowerCase()=='pizza' || values[0].toLowerCase()=='dominos'){
+
+    	var imageUrl = "http://martinionheels.com/wp-content/uploads/2016/12/15196070_10154507564607745_8533070322777242582_o-1140x596.jpg";
     	flag=true;
     }
 
@@ -80,7 +80,7 @@ function picMessage(recipientId, text) {
 
     if(values[0].toLowerCase()=='chinchan' || values[0].toLowerCase()=='shinchan' || values[0].toLowerCase()=='sinchan'){
 
-    	var imageUrl = "https://www.google.co.in/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwigtLa4vOrRAhVBu48KHZIaDa4QjRwIBw&url=https%3A%2F%2Fwww.walldevil.com%2F216767-shin-chan-wallpaper.html&psig=AFQjCNGd3mGHSJ_prZJ4KrOEAENGWfIung&ust=1485886424342163";
+    	var imageUrl = "https://www.walldevil.com/wallpapers/a49/wallpapers-crayon-background-wallpaper-cartoon.jpg";
     	flag=true;
     }
 
