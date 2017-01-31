@@ -504,7 +504,7 @@ var noImageUrl = 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULO
         var matches = JSON.parse(databundle).data;
         if(matches){
 	        matches.forEach(function(match) {
-	            var teams = ["Australia", "Bangladesh", "England", "India", "New Zealand", "Pakistan", "South Africa", "Sri Lanka", "West Indies", "Zimbabwe"];
+	            var teams = ["Australia", "Bangladesh","Scotland","Afghanistan","Ireland","England", "India", "New Zealand", "Pakistan", "South Africa", "Sri Lanka", "West Indies", "Zimbabwe"];
 	            cricapi.cricketScores(match.unique_id, function(_matchData) {
 	                var currentMatch = JSON.parse(_matchData, null, 2);
 	                var matchStarted = currentMatch.matchStarted;
@@ -517,7 +517,8 @@ var noImageUrl = 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULO
 	                var score = currentMatch.score;
 	                if (isTeamAInternational > -1 || isTeamBInternational > -1) {
 	                    if (matchStarted) {
-	                        
+	               
+
 				         	 messageData.attachment.payload.elements.push({
 
 					          	"title":matchBetween,
