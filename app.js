@@ -498,6 +498,7 @@ var imageUrl = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULON4
 sendTextMessage(sender, 'Fetching the latest cricket scores ...');
 cricapi.cricketMatches(function(databundle) {
 
+var cricArr=[];
 var noImageUrl = 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULON4O5WwmVius4C6DTJvH2NC2spQFhtWVL5jx8rFdvPH3p655pc';
         console.log("Got bundle of ", databundle.length, " bytes for cricketMatches()");
         
@@ -520,9 +521,8 @@ var noImageUrl = 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULO
 	                    if (matchStarted) {
 	               
 	                    	console.log("helo");
-				         	 messageData.attachment.payload.elements.push({
-
-					          	"title":matchBetween,
+	                    	cricArr.push({
+				         	  	"title":matchBetween,
 					          	"subtitle": "Match Status : " + score + "\n" + "Required : " + required,
 					          	"image_url": noImageUrl,
 					         	"buttons":[
@@ -533,7 +533,7 @@ var noImageUrl = 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULO
 					                            }
                         					]
  
-				          })      	
+				          });   	
 	                        
 	                    } 
 	                }
@@ -541,9 +541,15 @@ var noImageUrl = 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMEkUULO
 	        });
 				
 		}
+		console.log("circ arrayl----------" +cricArr)
+		
+		setTimeout(function(){
 
+			messageData.attachment.payload.elements=cricArr;
 		console.log("data ----"+JSON.stringify(messageData));
-//		sendRequest(sender, messageData); 
+		sendRequest(sender, messageData); 	
+		},4500);
+		
     });
 
 }
